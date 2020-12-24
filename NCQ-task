@@ -1,4 +1,4 @@
-function solution(N,A){
+function solution_A(N,A){
 	
 	var res = [];
 	res.length = N;
@@ -37,7 +37,7 @@ function solve(i,n,dp){
 }
 
 
-function solution(A,B){
+function solution_B(A,B){
 
 	var res = [];
 	res.length = res.length;
@@ -79,7 +79,7 @@ function sovle(i,dp,sum,A){
 	return dp[i][sum] ; 
 }
 
-function solution(A){
+function solution_C(A){
 	
 	
 	//max => [20000][10000];
@@ -87,5 +87,4 @@ function solution(A){
 	return solution(0,dp,0,A);
 	
 }
-
 
