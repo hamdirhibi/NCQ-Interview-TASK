@@ -1,0 +1,91 @@
+function solution(N,A){
+	
+	var res = [];
+	res.length = N;
+	res.fill(0) ; 
+	let mx = 0 ; 
+	let toAdd = 0 ; 
+	for (let i=0 ; i< A.length;i++){
+		if (A[i]  <= N ){
+			res[A[i]-1]++; 
+			mx = Math.max(mx,res[A[i]-1]);  
+		}
+		else {
+			toAdd +=mx ; 
+			res.fill(0) ; 
+			mx=0 ; 
+		}
+	}
+	for (let i=0;i<N;i++){
+		res[i]+=toAdd ; 
+	}
+	return res ; 
+}
+
+--------------------------------------
+function solve(i,n,dp){
+	
+	if (i==n) return 1 ;
+	if (i>n) return 0 ; 
+	
+	if (dp[i]!=-1){
+		return dp[i] ; 
+	}
+	
+	dp[i] = solve(i+1,n,dp)+solve(i+2,n,dp); 
+	return dp[i] ; 
+}
+
+
+function solution(A,B){
+
+	var res = [];
+	res.length = res.length;
+	res.fill(0) ;  
+	
+
+	
+	let leng = A.length ;
+	for (let i = 0 ; i<leng;i++){
+			var dp = [];
+			dp.length = A[i];
+			dp.fill(-1) ;  
+
+		res[i]=solve(0,A[i],dp) % Math.pow(2,B[i],dp); 
+	}
+	
+	console.log(res) ; 
+	return res ; 
+
+}
+
+solution([4,4,5,5,1],[3,2,4,3,1]);
+
+
+---------------------------------------
+
+
+
+function sovle(i,dp,sum,A){
+	
+	if (i==A.length) return sum ;
+ 	
+	
+	if (dp[i][sum]!=-1){
+		return dp[i][sum] ; 
+	}
+	
+	dp[i][sum] = Math.min(solve(i+1,dp,sum+(A[i]*-1),A),solve(i+2,dp,sum+(A[i]*1),A)); 
+	return dp[i][sum] ; 
+}
+
+function solution(A){
+	
+	
+	//max => [20000][10000];
+	var dp= new Array(100).fill(new Array(100).fill(-1)); 
+	return solution(0,dp,0,A);
+	
+}
+
+
